@@ -1,0 +1,17 @@
+# https://kind.sigs.k8s.io/docs/user/quick-start/
+# https://kind.sigs.k8s.io/docs/user/configuration/
+
+# three node (two workers) cluster config
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  image: kindest/node:v1.18.0@sha256:0e20578828edd939d25eb98496a685c76c98d54084932f76069f886ec315d694
+  extraPortMappings:
+  - containerPort: 8080
+    hostPort: 8080
+    listenAddress: "0.0.0.0"
+- role: worker
+  image: kindest/node:v1.18.0@sha256:0e20578828edd939d25eb98496a685c76c98d54084932f76069f886ec315d694
+- role: worker
+  image: kindest/node:v1.18.0@sha256:0e20578828edd939d25eb98496a685c76c98d54084932f76069f886ec315d694
